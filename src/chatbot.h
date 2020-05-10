@@ -29,8 +29,8 @@ public:
 
     //// STUDENT CODE
     ////
-    ChatBot& ChatBot::operator =(ChatBot&& obj);
-    ChatBot& ChatBot::operator =(const ChatBot& obj);
+     ChatBot::&operator =(ChatBot&& obj);
+     ChatBot::&operator =(const ChatBot& obj);
     ChatBot::ChatBot(ChatBot&& obj);
     ChatBot::ChatBot(const ChatBot& obj);
 

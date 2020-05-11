@@ -40,7 +40,7 @@ void GraphNode::MoveChatbotHere(ChatBot chatbot)
     _chatBot->SetCurrentNode(this);
 }
 
-void GraphNode::MoveChatbotToNewNode(std::unique_ptr<GraphNode> rootNode)
+void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
     newNode->MoveChatbotHere(std::move(_chatbot));
 }

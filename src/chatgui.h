@@ -23,7 +23,7 @@ private:
 
 public:
     // constructor / destructor
-    ChatBotPanelDialog(wxWindow *parent, wxWindowID id);
+    ChatBotPanelDialog(wxWindow* parent, wxWindowID id);
     ~ChatBotPanelDialog();
 
     // getter / setter

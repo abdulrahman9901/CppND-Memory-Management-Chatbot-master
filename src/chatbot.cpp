@@ -48,9 +48,8 @@ ChatBot::ChatBot(const ChatBot& obj)
 {
     std::cout << "COPYING content of instance " << &obj << " to instance " << this << std::endl;
 
-    _image = new wxBitmap(*(obj._image));
-    _currentNode = obj._currentNode;
-    _rootNode = obj._rootNode);
+    _image = new wxBitmap(*obj._image);
+    _rootNode = obj._rootNode;
     _chatLogic = obj._chatLogic;
 
 }
@@ -59,39 +58,35 @@ ChatBot::ChatBot( ChatBot&& obj)
     std::cout << "MOVING (constructor) instance " << &obj << " to instance " << this << std::endl;
 
     _image = obj._image;
-    _currentNode = obj._currentNode;
     _rootNode = obj._rootNode;
     _chatLogic = obj._chatLogic;
     obj._image = nullptr;
-    obj._currentNode = nullptr;
     obj._rootNode = nullptr;
     obj._chatLogic = nullptr;
 } 
-ChatBot::&operator =(const ChatBot& obj)
+ChatBot &ChatBot::operator =(const ChatBot& obj)
 {
     std::cout << "ASSIGNING content of instance " << &obj << " to instance " << this << std::endl;
 
-    if (*this == obj)
+    if (this == &obj)
         return *this;
+    delete _image;
     _image = new wxBitmap(*(obj._image));
-    _currentNode = obj._currentNode;
     _rootNode = obj._rootNode;
     _chatLogic = obj._chatLogic;
     return *this;
 }
- ChatBot::& operator =( ChatBot && obj)
+ChatBot& ChatBot::operator =( ChatBot && obj)
 {
     std::cout << "MOVING (assign) instance " << &obj << " to instance " << this << std::endl;
 
-    if (*this == obj)
+    if (this == &obj)
         return *this;
     delete _image;
     _image =obj._image;
-    _currentNode = obj._currentNode;
     _rootNode = obj._rootNode;
     _chatLogic = obj._chatLogic;
     obj._image = nullptr;
-    obj._currentNode = nullptr;
     obj._rootNode = nullptr;
     obj._chatLogic = nullptr;
     return *this;
